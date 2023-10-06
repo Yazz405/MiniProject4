@@ -19,5 +19,5 @@ The `JAVA PROJECTS` view allows you to manage your dependencies. More details ca
 
 Author: Alma Ordaz
 Description: An implementation of an associative arrat with key value pairs of any type
-Acknowledgements: none
+Acknowledgements: Joshua De La Rosa
 

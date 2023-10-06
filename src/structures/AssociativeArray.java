@@ -71,7 +71,15 @@ public class AssociativeArray<K, V> {
      * Convert the array to a string.
      */
     public String toString() {
-        return "{}"; // STUB
+        String help = "";
+
+        for(int i = 0; i < this.pairs.length; i++){
+            if(this.pairs[i] != null){
+                help += this.pairs[i].toString() + ", ";
+            }//if
+        }//for
+
+        return "{" + help + "}";
     } // toString()
 
     // +----------------+----------------------------------------------
@@ -128,13 +136,15 @@ public class AssociativeArray<K, V> {
      */
     public V get(K key) throws KeyNotFoundException {
 
-        for (int i = 0; i < this.pairs.length; i++) {
-            if (this.hasKey(key)) {
-                return this.pairs[i].value;
-            } // if
-        } // for
+        if(this.hasKey(key)){
+            for (int i = 0; i < this.pairs.length; i++){
+                if(this.pairs[i].key.equals(key)){
+                    return this.pairs[i].value;
+                }//if
+            }//for
+        }//if
 
-        throw new KeyNotFoundException();
+            throw new KeyNotFoundException();
 
     } // get(K)
 
@@ -144,8 +154,8 @@ public class AssociativeArray<K, V> {
     public boolean hasKey(K key) {
 
         // Assuming that KVPair() does not equal null
-        for (int i = 0; this.pairs[i] != null; i++) {
-            if (this.pairs[i].key == key) {
+        for (int i = 0; i < this.pairs.length; i++) {
+            if ((this.pairs[i] != null) && (this.pairs[i].key.equals(key))) {
                 return true;
             } // if
         } // for
@@ -161,10 +171,14 @@ public class AssociativeArray<K, V> {
     public void remove(K key) {
 
         for (int i = 0; i < this.pairs.length; i++) {
-            if (this.pairs[i].key == key) {
-                this.pairs[i] = new KVPair<K, V>();
+
+            if (this.pairs[i] == null){
+                continue;
+            }//if
+            else if (this.pairs[i].equals(key)){
+                this.pairs[i] = null;
                 this.size--;
-            } // if
+            }//else if
         } // for
     } // remove(K)
 
