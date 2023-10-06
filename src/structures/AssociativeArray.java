@@ -57,11 +57,11 @@ public class AssociativeArray<K, V> {
      * Create a copy of this AssociativeArray.
      */
     public AssociativeArray<K, V> clone() {
-        AssociativeArray<K,V> result = new AssociativeArray<K,V>();
-        
-        for(int i = 0; i < this.pairs.length; i++){
+        AssociativeArray<K, V> result = new AssociativeArray<K, V>();
+
+        for (int i = 0; i < this.pairs.length; i++) {
             result.pairs[i] = this.pairs[i];
-        }//for
+        } // for
 
         result.size = this.size;
         return result;
@@ -73,13 +73,13 @@ public class AssociativeArray<K, V> {
     public String toString() {
         String help = "";
 
-        for(int i = 0; i < this.pairs.length; i++){
-            if(this.pairs[i] != null){
+        for (int i = 0; i < this.pairs.length; i++) {
+            if (this.pairs[i] != null) {
                 help += this.pairs[i].toString() + ", ";
-            }//if
-        }//for
+            } // if
+        } // for
 
-        return "{" + help + "}";
+        return "{ " + help + "}";
     } // toString()
 
     // +----------------+----------------------------------------------
@@ -136,15 +136,15 @@ public class AssociativeArray<K, V> {
      */
     public V get(K key) throws KeyNotFoundException {
 
-        if(this.hasKey(key)){
-            for (int i = 0; i < this.pairs.length; i++){
-                if(this.pairs[i].key.equals(key)){
+        if (this.hasKey(key)) {
+            for (int i = 0; i < this.pairs.length; i++) {
+                if (this.pairs[i].key.equals(key)) {
                     return this.pairs[i].value;
-                }//if
-            }//for
-        }//if
+                } // if
+            } // for
+        } // if
 
-            throw new KeyNotFoundException();
+        throw new KeyNotFoundException();
 
     } // get(K)
 
@@ -170,16 +170,22 @@ public class AssociativeArray<K, V> {
      */
     public void remove(K key) {
 
-        for (int i = 0; i < this.pairs.length; i++) {
+        if (!this.hasKey(key)) {
+            return;
+        } // if
 
-            if (this.pairs[i] == null){
+        for (int i = 0; i < this.pairs.length; i++) {
+            if (this.pairs[i] == null) {
                 continue;
-            }//if
-            else if (this.pairs[i].equals(key)){
-                this.pairs[i] = null;
-                this.size--;
-            }//else if
+            } // if
+            else {
+                if (this.pairs[i].key.equals(key)) {
+                    this.pairs[i] = null;
+                    this.size--;
+                } // if
+            } // else
         } // for
+
     } // remove(K)
 
     /**
@@ -206,11 +212,11 @@ public class AssociativeArray<K, V> {
      */
     public int find(K key) throws KeyNotFoundException {
 
-        for(int i = 0; i < this.pairs.length; i++){
-            if (this.pairs[i].key == key){
+        for (int i = 0; i < this.pairs.length; i++) {
+            if (this.pairs[i].key == key) {
                 return i;
-            }//if
-        }//for
+            } // if
+        } // for
 
         throw new KeyNotFoundException();
     } // find(K)
