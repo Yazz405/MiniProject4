@@ -60,10 +60,16 @@ public class AssociativeArray<K, V> {
     AssociativeArray<K, V> copy = new AssociativeArray<>();
     KVPair<K, V> contents[] = java.util.Arrays.copyOf(this.pairs, this.pairs.length);
 
+    for (int i = 0; i < this.pairs.length; i++) {
+      if (this.pairs[i] != null) {
+        contents[i] = this.pairs[i].clone();
+      } // if
+    } // for
+
     copy.pairs = contents;
     copy.size = this.size;
-
     return copy;
+
   } // clone()
 
   /**
@@ -73,6 +79,7 @@ public class AssociativeArray<K, V> {
     String help = "";
     int i;
 
+    // gets the first pair in the array
     for (i = 0; i < this.pairs.length; i++) {
       if (this.pairs[i] != null) {
         help += " " + this.pairs[i].toString();
@@ -80,6 +87,7 @@ public class AssociativeArray<K, V> {
       } // if
     } // for
 
+    // the rest of the pairs
     for (int j = i + 1; j < this.pairs.length; j++) {
       if (this.pairs[j] != null) {
         help += ", " + this.pairs[j];
@@ -88,7 +96,7 @@ public class AssociativeArray<K, V> {
 
     if (!help.equals("")) {
       help += " ";
-    }
+    }// if
 
     return "{" + help + "}";
   } // toString()
@@ -102,10 +110,6 @@ public class AssociativeArray<K, V> {
    * get(key) will return value.
    */
   public void set(K key, V value) {
-
-    if (key == null) {
-      return;
-    } // if
 
     if (this.hasKey(key)) {
       try {
@@ -146,28 +150,29 @@ public class AssociativeArray<K, V> {
     if (this.hasKey(key)) {
       for (int i = 0; i < this.pairs.length; i++) {
         if (this.pairs[i] != null) {
-          if (this.pairs[i].key.equals(key)) {
+          if (this.pairs[i].key == null && key == null) {
             return this.pairs[i].value;
-          } // if
+          } else if (this.pairs[i].key != null && this.pairs[i].key.equals(key)) {
+            return this.pairs[i].value;
+          } // else-if
         } // if
       } // for
     } // if
 
     throw new KeyNotFoundException();
-
   } // get(K)
 
   /**
    * Determine if key appears in the associative array.
    */
   public boolean hasKey(K key) {
-    if (key == null) {
-      return false;
-    } // if
-
     for (int i = 0; i < this.pairs.length; i++) {
-      if ((this.pairs[i] != null) && (this.pairs[i].key.equals(key))) {
-        return true;
+      if (this.pairs[i] != null) {
+        if (this.pairs[i].key == null && key == null) {
+          return true;
+        } else if (this.pairs[i].key != null && this.pairs[i].key.equals(key)) {
+          return true;
+        } // else-if
       } // if
     } // for
 
@@ -183,10 +188,13 @@ public class AssociativeArray<K, V> {
 
     for (int i = 0; i < this.pairs.length; i++) {
       if (this.pairs[i] != null) {
-        if (this.pairs[i].key.equals(key)) {
+        if (this.pairs[i].key == null && key == null) {
           this.pairs[i] = null;
           this.size--;
-        } // if
+        } else if (this.pairs[i].key != null && this.pairs[i].key.equals(key)) {
+          this.pairs[i] = null;
+          this.size--;
+        } // else-if
       } // if
     } // for
 
@@ -218,34 +226,14 @@ public class AssociativeArray<K, V> {
 
     for (int i = 0; i < this.pairs.length; i++) {
       if (this.pairs != null) {
-        if (this.pairs[i].key == key) {
+        if (this.pairs[i].key == null && key == null) {
           return i;
-        } // if
+        } else if (this.pairs[i].key != null && this.pairs[i].key.equals(key)) {
+          return i;
+        } // else-if
       } // if
     } // for
 
     throw new KeyNotFoundException();
   } // find(K)
-
-  public static void main(String[] args) throws KeyNotFoundException {
-    // AssociativeArray<String, Integer> arr = new AssociativeArray<String, Integer>();
-    // arr.set("A", 1);
-    // arr.set("B", 2);
-    // arr.set("C", 3);
-
-    // AssociativeArray<String, Integer> arr2 = arr.clone();
-    // arr.set("A", 5);
-
-    // System.out.println("arr = " + arr.toString());
-    // System.out.println(arr.get("A"));
-    // System.out.println("arr2 = " + arr2.toString());
-
-    AssociativeArray<String, String> arr = new AssociativeArray<String, String>();
-    for (int i = 0; i < 10; i++) {
-      arr.set("Z", "Zebra");
-    }
-    System.out.println(arr.toString());
-    System.out.println(arr.size());
-  }
-
 } // class AssociativeArray

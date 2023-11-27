@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.math.BigInteger;
 import org.junit.jupiter.api.Test;
 
-
 /**
  * Tests of the AssociativeArray class.
  *
@@ -32,7 +31,8 @@ public class AssociativeArrayTests {
   }
 
   /*
-   * a simple test to see if the set function works correctly when set to the same element multiple
+   * a simple test to see if the set function works correctly when set to the same
+   * element multiple
    * times
    */
   @Test
@@ -46,7 +46,8 @@ public class AssociativeArrayTests {
   }
 
   /*
-   * An edge case test to see if the program correctly throws an error message when arr.get("b") is
+   * An edge case test to see if the program correctly throws an error message
+   * when arr.get("b") is
    * unable to get a key
    */
   @Test
@@ -70,7 +71,8 @@ public class AssociativeArrayTests {
   // +-----------------------+
 
   /**
-   * Micah says Let's test out Hoare's billion dollar mistake. Sam, I hope these tests are right.
+   * Micah says Let's test out Hoare's billion dollar mistake. Sam, I hope these
+   * tests are right.
    * 
    * Sam says null shouldn't be a value.
    */
@@ -88,7 +90,8 @@ public class AssociativeArrayTests {
   }
 
   /**
-   * SamR removed this test because null need not be a valid key. (It wasn't specified.)
+   * SamR removed this test because null need not be a valid key. (It wasn't
+   * specified.)
    */
   public void micahCantorTest2() {
     // keys and values may be null
@@ -299,17 +302,22 @@ public class AssociativeArrayTests {
   }
 
   /*
-   * SamR notes that remove is not supposed to throw exceptions and has commented out this test.
+   * SamR notes that remove is not supposed to throw exceptions and has commented
+   * out this test.
    * 
    * // testing on empty assoc arrays
    * 
-   * @Test public void jinnyEoEdge1() { AssociativeArray<String, String> testarr = new
+   * @Test public void jinnyEoEdge1() { AssociativeArray<String, String> testarr =
+   * new
    * AssociativeArray<String, String>();
    * 
-   * // check for toString when no values are set assertEquals("{}", testarr.toString());
+   * // check for toString when no values are set assertEquals("{}",
+   * testarr.toString());
    * 
-   * // check if error returns when attempting to remove a pair from empty list try {
-   * testarr.remove("1"); fail("Did not Throw KeyNotFoundException"); } catch (KeyNotFoundException
+   * // check if error returns when attempting to remove a pair from empty list
+   * try {
+   * testarr.remove("1"); fail("Did not Throw KeyNotFoundException"); } catch
+   * (KeyNotFoundException
    * e) { } }
    */
 
@@ -555,7 +563,8 @@ public class AssociativeArrayTests {
   }// kevinJohansonTest2()
 
   /**
-   * tests if expanding works SamR removed this test because it assumes a particular approach to
+   * tests if expanding works SamR removed this test because it assumes a
+   * particular approach to
    * expanding the array.
    */
   public void kevinJohansonEdge1() {
@@ -603,7 +612,8 @@ public class AssociativeArrayTests {
   /**
    * Does toString() skip all empty values?
    *
-   * SamR removed this test because it makes assumptions about the order of values in the array.
+   * SamR removed this test because it makes assumptions about the order of values
+   * in the array.
    */
   public void chloeKellyTest1() {
     // Build Array
@@ -1005,7 +1015,8 @@ public class AssociativeArrayTests {
   // should throw a KeyNotFoundException
   /*
    * 
-   * try { assertEquals(11, arr.find(11)); fail("key 11 does not exist in the array"); } catch
+   * try { assertEquals(11, arr.find(11));
+   * fail("key 11 does not exist in the array"); } catch
    * (Exception e) { // do nothing }
    */
 
@@ -1069,7 +1080,8 @@ public class AssociativeArrayTests {
   } // wenfeiLinTest01()
 
   /**
-   * Checking that the size doesn't change when setting a new value for an existing key
+   * Checking that the size doesn't change when setting a new value for an
+   * existing key
    */
   @Test
   public void wenfeiLinTest02() {
@@ -1157,7 +1169,8 @@ public class AssociativeArrayTests {
   }// test 3
 
   /*
-   * this is an edge case for removing a key from an empty array. this is supposed to fail
+   * this is an edge case for removing a key from an empty array. this is supposed
+   * to fail
    */
   @Test
   public void johnMillerEdge01() {
@@ -1671,7 +1684,8 @@ public class AssociativeArrayTests {
   }
 
   /**
-   * Tests if AssociativeArray can handle a large number of key-value pairs correctly & expand
+   * Tests if AssociativeArray can handle a large number of key-value pairs
+   * correctly & expand
    * capacity as needed.
    */
   @Test
@@ -1694,7 +1708,8 @@ public class AssociativeArrayTests {
   }
 
   /**
-   * Tests if AssociativeArray behaves correctly when retrieving a value from an empty array.
+   * Tests if AssociativeArray behaves correctly when retrieving a value from an
+   * empty array.
    */
   @Test
   public void madelSibalEdge1() {
@@ -1900,7 +1915,8 @@ public class AssociativeArrayTests {
   // | Tests by Luke Walters |
   // +-----------------------+
   /**
-   * Checks that the expand method and clone methods work properly and that they have the same pair
+   * Checks that the expand method and clone methods work properly and that they
+   * have the same pair
    * size length at the end
    */
   @Test
@@ -1915,7 +1931,8 @@ public class AssociativeArrayTests {
   }
 
   /**
-   * Ensures that when an element is removed from the middle of the list the next added element
+   * Ensures that when an element is removed from the middle of the list the next
+   * added element
    * takes its place
    */
   @Test
@@ -1926,7 +1943,8 @@ public class AssociativeArrayTests {
     testArray.set(3, 33);
     testArray.remove(2);
     testArray.set(4, 44);
-    // SamR commented out the following, since array order is not necessarily predicatble.
+    // SamR commented out the following, since array order is not necessarily
+    // predicatble.
     // String checker = "{ 1: 11, 4: 44, 3: 33 }";
     // assertEquals(testArray.toString(), checker);
   }
@@ -1949,7 +1967,8 @@ public class AssociativeArrayTests {
   // +------------------------+
 
   /**
-   * Instantiates an array and runs tests with the toString, set, hasKey, & get methods
+   * Instantiates an array and runs tests with the toString, set, hasKey, & get
+   * methods
    */
   @Test
   public void JonathanWangTest1() {
@@ -1983,7 +2002,8 @@ public class AssociativeArrayTests {
   }
 
   /**
-   * Instantiates an array and runs tests with the additional remove method, checking if it performs
+   * Instantiates an array and runs tests with the additional remove method,
+   * checking if it performs
    * properly
    */
   @Test
@@ -2106,7 +2126,8 @@ public class AssociativeArrayTests {
   } // lydiaYeTest02
 
   /*
-   * Tests what happen when we remove from an empty array SamR removed this test because `remove` is
+   * Tests what happen when we remove from an empty array SamR removed this test
+   * because `remove` is
    * not supposed to throw exceptions
    */
   public void lydiaYeEdge01() {
@@ -2149,7 +2170,8 @@ public class AssociativeArrayTests {
   // | Tests by Livia Stein Freitas |
   // +-------------------+
 
-  // Checks that if set is called on a non-empty slot, the last value set gets correctly assigned
+  // Checks that if set is called on a non-empty slot, the last value set gets
+  // correctly assigned
   @Test
   public void LiviaSteinTest1() {
     AssociativeArray<String, String> arr = new AssociativeArray<String, String>();
