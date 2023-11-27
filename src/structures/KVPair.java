@@ -47,6 +47,10 @@ class KVPair<K,V> {
   } // clone()
 
   public String toString() {
-    return  this.key.toString() + " : " + this.value.toString();
+    if (this.value != null){
+      return  this.key.toString() + " : " + this.value.toString();
+    } else {
+      return this.key.toString() + " : ";
+    }
   } // toString()
 } // class KVPair
